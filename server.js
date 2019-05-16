@@ -1,4 +1,8 @@
-var Twit = require('twit')
+var Twit = require('twit');
+var express = require('express');
+var app = express();
+
+const PORT = process.env.PORT || 3000;
 
 var T = new Twit({
   consumer_key:         'jo2B51c4tclG7y3QPSJCmdIlT',
@@ -9,6 +13,32 @@ var T = new Twit({
   strictSSL:            true,     // optional - requires SSL certificates to be valid.
 });
 
-T.post('statuses/update', { status: 'This is test Tweet!' }, function(err, data, response) {
-  console.log(data)
-})
+app.get("/", function(req, res, next){
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 
+  'Content-Type, Authorization, Content-Length, X-Requested-With');
+
+
+  let type = req.query.status;
+  let info = req.query.info;
+  let id = req.query.id;
+
+  let typeString;
+
+  if(type == "duty-matched")
+    typeString = "임무가 매칭되었습니다!";
+  else if(type == "fate-occured")
+    typeString = "돌발임무가 발생했습니다!";
+  
+  let message = "@" + id + " " + typeString + " << " + info + " >>";
+  T.post('statuses/update', { status: message }, function(err, data, response) {
+    console.log(data)
+    res.send(data);
+  });
+
+});
+
+app.listen(PORT, function () {
+  console.log('Example app listening on port ' + PORT + '!');
+});

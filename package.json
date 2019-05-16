@@ -3,6 +3,7 @@
     "description": "tweet a message with mention",
     "authors": "Jaehyuk-Lee",
     "version": "0.1",
+    "main": "server.js",
     "dependencies": {
         "twit":"^2.2.11"
     }

@@ -20,18 +20,10 @@ app.get("/", function(req, res, next){
   'Content-Type, Authorization, Content-Length, X-Requested-With');
 
 
-  let type = req.query.status;
-  let info = req.query.info;
-  let id = req.query.id;
-
-  let typeString;
-
-  if(type == "duty-matched")
-    typeString = "임무가 매칭되었습니다!";
-  else if(type == "fate-occured")
-    typeString = "돌발임무가 발생했습니다!";
+  let m = req.query.m;
+  let u = req.query.u;
   
-  let message = "@" + id + " " + typeString + " << " + info + " >>";
+  let message = "@" + u + " " + m;
   T.post('statuses/update', { status: message }, function(err, data, response) {
     console.log(data)
     res.send(data);

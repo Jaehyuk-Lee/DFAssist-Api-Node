@@ -26,7 +26,10 @@ app.get("/", function(req, res, next){
   let message = "@" + u + " " + m;
   T.post('statuses/update', { status: message }, function(err, data, response) {
     console.log(data)
-    res.send(data);
+    if(data.created_at != "")
+      res.send("0");
+    else
+      res.send("1");
   });
 
 });

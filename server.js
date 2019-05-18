@@ -1,3 +1,5 @@
+const config = require('./config');
+
 var Twit = require('twit');
 var express = require('express');
 var app = express();
@@ -20,18 +22,26 @@ app.get("/", function(req, res, next){
   'Content-Type, Authorization, Content-Length, X-Requested-With');
 
 
-  let m = req.query.m;
-  let u = req.query.u;
-  
-  let message = "@" + u + " " + m;
-  T.post('statuses/update', { status: message }, function(err, data, response) {
+  let type = req.query.type;
+  let name = req.query.name;
+  let user = req.query.user;
+  let lang = req.query.lang;
+  let hash = req.query.hash;
+
+  if(type == "" || name == "" || user == "" || lang == "" || hash == ""){
+    res.send("1");
+    return;
+  }
+
+  let message = config.localization[type][lang].replace("{0}", name);
+
+  T.post('statuses/update', { status: "@" + user + " " + message }, function(err, data, response) {
     console.log(data)
     if(data.created_at != "")
       res.send("0");
-    else
+    else if(data.errors.length != 0)
       res.send("1");
   });
-
 });
 
 app.listen(PORT, function () {

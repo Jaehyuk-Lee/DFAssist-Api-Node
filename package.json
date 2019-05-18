@@ -1,11 +1,13 @@
 {
-  "name": "dfassist-twitter-api",
+  "name": "dfassist-api",
   "version": "1.0.0",
-  "description": "tweet a message with mention",
+  "description": "send a message with mention (Twitter, Discord)",
   "main": "server.js",
   "dependencies": {
     "twit": "^2.2.11",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "request": "^2.88.0",
+    "webhook-discord": "^3.2.0"
   },
   "devDependencies": {},
   "scripts": {
@@ -17,12 +19,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Jaehyuk-Lee/DFAssist-Twitter-Api-Node.git"
+    "url": "git+https://github.com/Jaehyuk-Lee/DFAssist-Api-Node.git"
   },
   "author": "Jaehyuk-Lee",
   "license": "",
   "bugs": {
-    "url": "https://github.com/Jaehyuk-Lee/DFAssist-Twitter-Api-Node/issues"
+    "url": "https://github.com/Jaehyuk-Lee/DFAssist-Api-Node/issues"
   },
-  "homepage": "https://github.com/Jaehyuk-Lee/DFAssist-Twitter-Api-Node#readme"
+  "homepage": "https://github.com/Jaehyuk-Lee/DFAssist-Api-Node#readme"
 }

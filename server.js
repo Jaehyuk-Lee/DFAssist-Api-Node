@@ -3,7 +3,6 @@ const config = require('./config');
 const Twit = require('twit');
 const express = require('express');
 const app = express();
-const request = require('request');
 const webhook = require("webhook-discord");
 
 const Hook = new webhook.Webhook(config.discordWebHookUrl);
@@ -55,10 +54,10 @@ app.get("/", function(req, res, next){
       .setText("<@!" + user + ">" + message);
     try{
       Hook.send(msg);
-      res.send("1");
+      res.send("0");
     }
     catch{
-      res.send("0");
+      res.send("1");
     }
   }
 });

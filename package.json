@@ -6,7 +6,6 @@
   "dependencies": {
     "twit": "^2.2.11",
     "express": "^4.16.4",
-    "request": "^2.88.0",
     "webhook-discord": "^3.2.0"
   },
   "devDependencies": {},

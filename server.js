@@ -20,7 +20,7 @@ const T = new Twit({
 
 app.get("/", function(req, res, next){
   res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Methods', 'GET,POST');
   res.header('Access-Control-Allow-Headers', 
   'Content-Type, Authorization, Content-Length, X-Requested-With');
 
@@ -32,7 +32,7 @@ app.get("/", function(req, res, next){
   let lang = req.query.lang;
   let hash = req.query.hash;
 
-  if(type == "" || name == "" || user == "" || lang == "" || hash == ""){
+  if(type === "" || name === "" || user === "" || lang === "" || hash === ""){
     res.send("1");
     return;
   }
@@ -49,6 +49,10 @@ app.get("/", function(req, res, next){
     });
   }
   else if (service == "discord"){
+    if((user+"").length != 18){
+      res.send("1");
+      return;
+    }
     const msg = new webhook.MessageBuilder()
       .setName("NotifyBot")
       .setText("<@!" + user + ">" + message);

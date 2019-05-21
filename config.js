@@ -1,9 +1,9 @@
 const config = {
     twitter: {
-        consumer_key : 'jo2B51c4tclG7y3QPSJCmdIlT',
-        consumer_secret : 'rX8e8mNnDl2T1LqbJJ25ki1LPPrSKal57FNWGJ3UKDENcKzUQB',
-        access_token : '1106925839290032128-N5AM43Q88vp8KJzukhLzD01zCPXCEv',
-        access_token_secret : '5ClHjc8VCeQn9W2qnw3yEEWbihpM35JuHMmBhkPT7amyN'
+        consumer_key : 'vWV80k3QXZ3SxnKsUfLyOfzdZ',
+        consumer_secret : 'FvgqZl11dWwsF2AbWgLDHkQlAzxhZvdSQWfCDz8lwZNwzp0OXG',
+        access_token : '1106925839290032128-umtJWi8WpkUm9W6x0QPdAP8By2zkT3',
+        access_token_secret : '6X5GC98FfHMRhyormNSRpyCjtQjZVZun2pf4l8MTqNxGO'
     },
     discordWebHookUrl : 'https://discordapp.com/api/webhooks/579202667843158016/9cb4SJ6AcYt_xKawqKpWGisab-TzbIlYHPnpYnUxGcCULWdioonsGfBHzRldt0bmcLzS',
     localization : {

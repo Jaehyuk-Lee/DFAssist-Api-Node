@@ -40,7 +40,7 @@ app.get("/", function(req, res, next){
   let message = " " + config.localization[type][lang].replace("{0}", name);
   console.log(message);
   if(service == "twitter"){
-    T.post('statuses/update', { status: "@" + user + message }, function(err, data, response) {
+    T.post('statuses/update', { status: "@" + user + message + " (" + hash + ")" }, function(err, data, response) {
       console.log(data);
       if(data.created_at != "")
         res.send("0");

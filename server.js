@@ -4,6 +4,7 @@ const Twit = require('twit');
 const express = require('express');
 const app = express();
 const webhook = require("webhook-discord");
+const request = require("request");
 
 const Hook = new webhook.Webhook(config.discordWebHookUrl);
 
@@ -31,6 +32,13 @@ app.get("/", function(req, res, next){
   let user = req.query.user;
   let lang = req.query.lang;
   let hash = req.query.hash;
+  if (service == "telegram_chat_id"){
+    request.get({uri:`https://api.telegram.org/bot${config.telegramApiKey}/getUpdates`}, function (error, response, body) {
+      let result = JSON.parse(body);
+      res.send(result.result[0].message.chat.id.toString());
+    });
+    return;
+  }
 
   if(type === "" || name === "" || user === "" || lang === "" || hash === ""){
     res.send("1");
@@ -63,6 +71,16 @@ app.get("/", function(req, res, next){
     catch{
       res.send("1");
     }
+  }
+  else if  (service == "telegram"){
+    let chat_id = "804291439";
+    request.get({uri:`https://api.telegram.org/bot${config.telegramApiKey}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(message)}`}, function (error, response, body) {
+      let result = JSON.parse(body);
+      if(result.ok)
+        res.send("0");
+      else
+        res.send("1");
+    });
   }
 });
 

@@ -5,6 +5,8 @@ const express = require('express');
 const app = express();
 const webhook = require("webhook-discord");
 const request = require("request");
+var bodyParser = require('body-parser');
+const axios = require('axios');
 
 const Hook = new webhook.Webhook(config.discordWebHookUrl);
 
@@ -18,6 +20,46 @@ const PORT = process.env.PORT || 3000;
   timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
   strictSSL:            true,     // optional - requires SSL certificates to be valid.
 });*/
+
+app.use(bodyParser.json()) // for parsing application/json
+app.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+) // for parsing application/x-www-form-urlencoded
+
+//This is the route the API will call
+app.get('/new-message', function(req, res) {
+  const { message } = req.body;
+
+  //Each message contains "text" and a "chat" object, which has an "id" which is the chat id
+
+  if (!message || message.text.toLowerCase().indexOf('marco') < 0) {
+    // In case a message is not present, or if our message does not have the word marco in it, do nothing and return an empty response
+    return res.end()
+  }
+
+  // If we've gotten this far, it means that we have received a message containing the word "marco".
+  // Respond by hitting the telegram bot API and responding to the approprite chat_id with the word "Polo!!"
+  // Remember to use your own API toked instead of the one below  "https://api.telegram.org/bot<your_api_token>/sendMessage"
+  axios.post(
+      `https://api.telegram.org/bot${config.telegramApiKey}/sendMessage`,
+      {
+        chat_id: message.chat.id,
+        text: 'Polo!!'
+      }
+    )
+    .then(response => {
+      // We get here if the message was successfully posted
+      console.log('Message posted')
+      res.end('ok')
+    })
+    .catch(err => {
+      // ...and here if it was not
+      console.log('Error :', err)
+      res.end('Error :' + err)
+    })
+})
 
 app.get("/", function(req, res, next){
   res.header('Access-Control-Allow-Origin', '*');

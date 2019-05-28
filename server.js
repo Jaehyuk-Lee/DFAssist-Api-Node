@@ -1,6 +1,6 @@
 const config = require('./config');
 
-const Twit = require('twit');
+//const Twit = require('twit');
 const express = require('express');
 const app = express();
 const webhook = require("webhook-discord");
@@ -10,14 +10,14 @@ const Hook = new webhook.Webhook(config.discordWebHookUrl);
 
 const PORT = process.env.PORT || 3000;
 
-const T = new Twit({
+/*const T = new Twit({
   consumer_key:         config.twitter.consumer_key,
   consumer_secret:      config.twitter.consumer_secret,
   access_token:         config.twitter.access_token,
   access_token_secret:  config.twitter.access_token_secret,
   timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
   strictSSL:            true,     // optional - requires SSL certificates to be valid.
-});
+});*/
 
 app.get("/", function(req, res, next){
   res.header('Access-Control-Allow-Origin', '*');
@@ -48,13 +48,14 @@ app.get("/", function(req, res, next){
   let message = " " + config.localization[type][lang].replace("{0}", name);
   console.log(message);
   if(service == "twitter"){
-    T.post('statuses/update', { status: "@" + user + message + " (" + hash.substring(0, 5) + ")" }, function(err, data, response) {
+    res.send("0");
+    /*T.post('statuses/update', { status: "@" + user + message + " (" + hash.substring(0, 5) + ")" }, function(err, data, response) {
       console.log(data);
       if(data.created_at != "")
         res.send("0");
       else if(data.errors.length != 0)
         res.send("1");
-    });
+    });*/
   }
   else if (service == "discord"){
     if((user+"").length != 18){

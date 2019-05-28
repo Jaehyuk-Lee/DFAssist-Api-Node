@@ -39,7 +39,7 @@ app.post('/new-message', function(req, res) {
         `https://api.telegram.org/bot${config.telegramApiKey}/sendMessage`,
         {
           chat_id: message.chat.id,
-          text: 'Your Telegram ID : ' + message.chat.id
+          text: 'Your Telegram Chat ID : ' + message.chat.id
         }
       )
       .then(response => {

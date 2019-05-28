@@ -83,14 +83,14 @@ app.get("/", function(req, res, next){
   }
 
   if(type === "" || name === "" || user === "" || lang === "" || hash === ""){
-    res.send("1");
+    res.send(": some missing information");
     return;
   }
 
   let message = " " + config.localization[type][lang].replace("{0}", name);
   console.log(message);
   if(service == "twitter"){
-    res.send("0");
+    res.send(": no more tweet alarm support");
     /*T.post('statuses/update', { status: "@" + user + message + " (" + hash.substring(0, 5) + ")" }, function(err, data, response) {
       console.log(data);
       if(data.created_at != "")
@@ -101,7 +101,7 @@ app.get("/", function(req, res, next){
   }
   else if (service == "discord"){
     if((user+"").length != 18){
-      res.send("1");
+      res.send(": Discord ID must be a 18-digit number");
       return;
     }
     const msg = new webhook.MessageBuilder()
@@ -111,8 +111,8 @@ app.get("/", function(req, res, next){
       Hook.send(msg);
       res.send("0");
     }
-    catch{
-      res.send("1");
+    catch (err) {
+      res.send(": " + err);
     }
   }
   else if  (service == "telegram"){
@@ -122,7 +122,7 @@ app.get("/", function(req, res, next){
       if(result.ok)
         res.send("0");
       else
-        res.send("1 : " + result.description);
+        res.send(": " + result.description);
     });
   }
 });

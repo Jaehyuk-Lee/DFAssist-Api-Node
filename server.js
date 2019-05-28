@@ -116,13 +116,13 @@ app.get("/", function(req, res, next){
     }
   }
   else if  (service == "telegram"){
-    let chat_id = req.body.chat_id || "804291439";
+    let chat_id = req.body.user; // 내꺼 804291439333
     request.get({uri:`https://api.telegram.org/bot${config.telegramApiKey}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(message)}`}, function (error, response, body) {
       let result = JSON.parse(body);
       if(result.ok)
         res.send("0");
       else
-        res.send("1");
+        res.send("1 : " + result.description);
     });
   }
 });

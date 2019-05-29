@@ -83,7 +83,7 @@ app.get("/", function(req, res, next){
   }
 
   if(type === "" || name === "" || user === "" || lang === "" || hash === ""){
-    res.send(": some missing information");
+    res.send(": " + config.localization['missing-info'][lang]);
     return;
   }
 
@@ -101,7 +101,7 @@ app.get("/", function(req, res, next){
   }
   else if (service == "discord"){
     if((user+"").length != 18){
-      res.send(": Discord ID must be a 18-digit number");
+      res.send(": " + config.localization['wrong-discord-id'][lang]);
       return;
     }
     const msg = new webhook.MessageBuilder()

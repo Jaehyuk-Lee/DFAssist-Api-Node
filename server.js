@@ -34,7 +34,7 @@ app.post('/new-message', function(req, res) {
 
   //Each message contains "text" and a "chat" object, which has an "id" which is the chat id
 
-  if (!message) {
+  if (message) {
     axios.post(
         `https://api.telegram.org/bot${config.telegramApiKey}/sendMessage`,
         {

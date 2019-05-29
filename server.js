@@ -90,7 +90,7 @@ app.get("/", function(req, res, next){
   let message = " " + config.localization[type][lang].replace("{0}", name);
   console.log(message);
   if(service == "twitter"){
-    res.send(": no more tweet alarm support");
+    res.send("no more tweet alarm support");
     /*T.post('statuses/update', { status: "@" + user + message + " (" + hash.substring(0, 5) + ")" }, function(err, data, response) {
       console.log(data);
       if(data.created_at != "")
@@ -121,7 +121,7 @@ app.get("/", function(req, res, next){
       if(result.ok)
         res.send("0");
       else
-        res.send(": " + result.description);
+        res.send(result.description);
     });
   }
 });

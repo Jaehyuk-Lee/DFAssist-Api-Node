@@ -7,6 +7,9 @@ const request = require("request");
 const bodyParser = require('body-parser');
 const axios = require('axios');
 
+const Sentry = require('@sentry/node');
+Sentry.init({ dsn: config.sentryDSN });
+
 const Hook = new webhook.Webhook(config.discordWebHookUrl);
 /* beta test */
 const telegram_Hook = new webhook.Webhook("https://discordapp.com/api/webhooks/583288273888083988/aPXp27TwdV5V0A_91pBFpaASBpttwelVr1fd343IrGlzRmw7nVF8apCa--69Mn2pozhB");
@@ -45,7 +48,7 @@ app.post('/new-message', function(req, res) {
           telegram_Hook.send(msg);
         }
         catch (err) {
-          
+          Sentry.captureException(err);
         }
         /* beta test */
         res.end('ok')
@@ -75,10 +78,13 @@ app.get("/", function(req, res, next){
   let type = req.query.type;
   let name = req.query.name;
   let user = req.query.user;
-  let lang = req.query.lang;
+  let lang = req.query.lang || 'en-us';
   let hash = req.query.hash;
 
   if(!service || !type || !name || !user || !hash){
+    res.end(config.localization['missing-info'][lang]);
+    console.log("<GET data>\n" + (req.query || "GET-undefined"));
+    Sentry.captureException(config.localization['missing-info'][lang]);
     return;
   }
 
@@ -88,6 +94,8 @@ app.get("/", function(req, res, next){
   if (service == "discord"){
     if((user+"").length != 18){
       res.send(config.localization['wrong-discord-id'][lang]);
+      console.log("user: " + (user || "user-undefined"));
+      Sentry.captureException(config.localization['wrong-discord-id'][lang]);
       return;
     }
     const msg = new webhook.MessageBuilder()
@@ -99,6 +107,8 @@ app.get("/", function(req, res, next){
     }
     catch (err) {
       res.send(err);
+      console.log(err);
+      Sentry.captureException(err);
     }
   }
   else if  (service == "telegram"){
@@ -106,10 +116,14 @@ app.get("/", function(req, res, next){
       let result = JSON.parse(body);
       if(result.ok)
         res.send("0");
-      else
+      else{
         res.send(result.description);
+        console.log(result);
+        Sentry.captureException(result);
+      }
     });
   }
+  res.end();
 });
 
 app.listen(PORT, function () {

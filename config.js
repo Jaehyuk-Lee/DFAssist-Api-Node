@@ -1,6 +1,7 @@
 const config = {
     discordWebHookUrl : 'https://discordapp.com/api/webhooks/579202667843158016/9cb4SJ6AcYt_xKawqKpWGisab-TzbIlYHPnpYnUxGcCULWdioonsGfBHzRldt0bmcLzS',
     telegramApiKey: '841497477:AAFzJWuoI2hSKDUcM8UlrGtiNygcCRT6w28',
+    sentryDSN : 'https://933e98cad7d44f48854274ad723437cf@sentry.io/1471397',
     localization : {
         'duty-matched' : {
             'ko-kr' : '< {0} > 매칭!',

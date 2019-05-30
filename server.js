@@ -78,14 +78,14 @@ app.get("/", function(req, res, next){
   let lang = req.query.lang;
   let hash = req.query.hash;
 
-  if(type === "" || name === "" || user === "" || lang === "" || hash === ""){
+  if(service === "" || type === "" || name === "" || user === "" || lang === "" || hash === ""){
     res.send(config.localization['missing-info'][lang]);
     return;
   }
 
-  let message = " " + config.localization[type][lang].replace("{0}", name);
+  let message = config.localization[type][lang].replace("{0}", name);
   console.log(message);
-  
+
   if (service == "discord"){
     if((user+"").length != 18){
       res.send(config.localization['wrong-discord-id'][lang]);
@@ -93,7 +93,7 @@ app.get("/", function(req, res, next){
     }
     const msg = new webhook.MessageBuilder()
       .setName("NotifyBot")
-      .setText("<@!" + user + ">" + message);
+      .setText("<@!" + user + "> " + message);
     try{
       Hook.send(msg);
       res.send("0");

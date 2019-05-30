@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 const webhook = require("webhook-discord");
 const request = require("request");
-var bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 const axios = require('axios');
 
 const Hook = new webhook.Webhook(config.discordWebHookUrl);
@@ -78,8 +78,7 @@ app.get("/", function(req, res, next){
   let lang = req.query.lang;
   let hash = req.query.hash;
 
-  if(service === "" || type === "" || name === "" || user === "" || lang === "" || hash === ""){
-    res.send(config.localization['missing-info'][lang]);
+  if(!service || !type || !name || !user || !hash){
     return;
   }
 

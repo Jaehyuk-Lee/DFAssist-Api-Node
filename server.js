@@ -55,8 +55,9 @@ app.post('/new-message', function(req, res) {
       })
       .catch(err => {
         // ...and here if it was not
-        console.log('Error :', err)
-        res.end('Error :' + err)
+        res.end('Error :' + err);
+        console.log('Error :', err);
+        Sentry.captureException(err);
       })
     // In case a message is not present, or if our message does not have the word marco in it, do nothing and return an empty response
   }
@@ -83,7 +84,7 @@ app.get("/", function(req, res, next){
 
   if(!service || !type || !name || !user || !hash){
     res.end(config.localization['missing-info'][lang]);
-    console.log("<GET data>\n" + (req.query || "GET-undefined"));
+    console.log("<GET data>\n" + JSON.stringify(req.query));
     Sentry.captureException(config.localization['missing-info'][lang]);
     return;
   }
@@ -118,7 +119,7 @@ app.get("/", function(req, res, next){
         res.send("0");
       else{
         res.send(result.description);
-        console.log(result);
+        console.log(body);
         Sentry.captureException(result);
       }
     });

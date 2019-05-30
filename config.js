@@ -1,10 +1,4 @@
 const config = {
-    twitter: {
-        consumer_key : 'vWV80k3QXZ3SxnKsUfLyOfzdZ',
-        consumer_secret : 'FvgqZl11dWwsF2AbWgLDHkQlAzxhZvdSQWfCDz8lwZNwzp0OXG',
-        access_token : '1106925839290032128-umtJWi8WpkUm9W6x0QPdAP8By2zkT3',
-        access_token_secret : '6X5GC98FfHMRhyormNSRpyCjtQjZVZun2pf4l8MTqNxGO'
-    },
     discordWebHookUrl : 'https://discordapp.com/api/webhooks/579202667843158016/9cb4SJ6AcYt_xKawqKpWGisab-TzbIlYHPnpYnUxGcCULWdioonsGfBHzRldt0bmcLzS',
     telegramApiKey: '841497477:AAFzJWuoI2hSKDUcM8UlrGtiNygcCRT6w28',
     localization : {

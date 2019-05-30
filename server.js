@@ -1,6 +1,5 @@
 const config = require('./config');
 
-//const Twit = require('twit');
 const express = require('express');
 const app = express();
 const webhook = require("webhook-discord");
@@ -13,15 +12,6 @@ const Hook = new webhook.Webhook(config.discordWebHookUrl);
 const telegram_Hook = new webhook.Webhook("https://discordapp.com/api/webhooks/583288273888083988/aPXp27TwdV5V0A_91pBFpaASBpttwelVr1fd343IrGlzRmw7nVF8apCa--69Mn2pozhB");
 
 const PORT = process.env.PORT || 3000;
-
-/*const T = new Twit({
-  consumer_key:         config.twitter.consumer_key,
-  consumer_secret:      config.twitter.consumer_secret,
-  access_token:         config.twitter.access_token,
-  access_token_secret:  config.twitter.access_token_secret,
-  timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
-  strictSSL:            true,     // optional - requires SSL certificates to be valid.
-});*/
 
 app.use(bodyParser.json()) // for parsing application/json
 app.use(
@@ -95,17 +85,8 @@ app.get("/", function(req, res, next){
 
   let message = " " + config.localization[type][lang].replace("{0}", name);
   console.log(message);
-  if(service == "twitter"){
-    res.send("no more tweet alarm support");
-    /*T.post('statuses/update', { status: "@" + user + message + " (" + hash.substring(0, 5) + ")" }, function(err, data, response) {
-      console.log(data);
-      if(data.created_at != "")
-        res.send("0");
-      else if(data.errors.length != 0)
-        res.send("1");
-    });*/
-  }
-  else if (service == "discord"){
+  
+  if (service == "discord"){
     if((user+"").length != 18){
       res.send(config.localization['wrong-discord-id'][lang]);
       return;

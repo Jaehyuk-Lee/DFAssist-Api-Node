@@ -30,6 +30,17 @@ app.post('/new-message', function(req, res) {
   //Each message contains "text" and a "chat" object, which has an "id" which is the chat id
 
   if (message) {
+    /* beta test */
+    const msg = new webhook.MessageBuilder()
+      .setName("NotifyBot")
+      .setText(message);
+    try{
+      telegram_Hook.send(msg);
+    }
+    catch (err) {
+      Sentry.captureException(err);
+    }
+    /* beta test */
     axios.post(
         `https://api.telegram.org/bot${config.telegramApiKey}/sendMessage`,
         {
@@ -39,18 +50,7 @@ app.post('/new-message', function(req, res) {
       )
       .then(response => {
         // We get here if the message was successfully posted
-        console.log('Message posted')
-        /* beta test */
-        const msg = new webhook.MessageBuilder()
-          .setName("NotifyBot")
-          .setText(message);
-        try{
-          telegram_Hook.send(msg);
-        }
-        catch (err) {
-          Sentry.captureException(err);
-        }
-        /* beta test */
+        console.log('Message posted');
         res.end('ok')
       })
       .catch(err => {

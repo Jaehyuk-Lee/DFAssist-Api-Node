@@ -87,13 +87,6 @@ app.get("/", function(req, res, next){
   let user = req.query.user;
   let lang = req.query.lang;
   let hash = req.query.hash;
-  if (service == "telegram_chat_id"){
-    request.get({uri:`https://api.telegram.org/bot${config.telegramApiKey}/getUpdates`}, function (error, response, body) {
-      let result = JSON.parse(body);
-      res.send(result);
-    });
-    return;
-  }
 
   if(type === "" || name === "" || user === "" || lang === "" || hash === ""){
     res.send(config.localization['missing-info'][lang]);

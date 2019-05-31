@@ -128,7 +128,6 @@ app.get("/", function(req, res, next){
       }
     });
   }
-  res.end();
 });
 
 app.listen(PORT, function () {

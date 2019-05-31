@@ -11,8 +11,6 @@ const Sentry = require('@sentry/node');
 Sentry.init({ dsn: config.sentryDSN });
 
 const Hook = new webhook.Webhook(config.discordWebHookUrl);
-/* beta test */
-const telegram_Hook = new webhook.Webhook("https://discordapp.com/api/webhooks/583288273888083988/aPXp27TwdV5V0A_91pBFpaASBpttwelVr1fd343IrGlzRmw7nVF8apCa--69Mn2pozhB");
 
 const PORT = process.env.PORT || 3000;
 
@@ -34,17 +32,6 @@ app.post('/new-message', function(req, res) {
   //Each message contains "text" and a "chat" object, which has an "id" which is the chat id
 
   if (message) {
-    /* beta test */
-    const msg = new webhook.MessageBuilder()
-      .setName("NotifyBot")
-      .setText(message);
-    try{
-      telegram_Hook.send(msg);
-    }
-    catch (err) {
-      Sentry.captureException(err);
-    }
-    /* beta test */
     axios.post(
         `https://api.telegram.org/bot${config.telegramApiKey}/sendMessage`,
         {

@@ -23,6 +23,10 @@ app.use(
   })
 ) // for parsing application/x-www-form-urlencoded
 
+app.get('/test-heartbeat', function(req, res) {
+  res.status(200).end();
+});
+
 //This is the route the API will call
 app.post('/new-message', function(req, res) {
   const { message } = req.body;

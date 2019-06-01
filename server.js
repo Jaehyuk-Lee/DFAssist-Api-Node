@@ -7,12 +7,24 @@ const request = require("request");
 const bodyParser = require('body-parser');
 const axios = require('axios');
 
+const Discord = require('discord.js');
+const client = new Discord.Client();
+
 const Sentry = require('@sentry/node');
 Sentry.init({ dsn: config.sentryDSN });
 
 const Hook = new webhook.Webhook(config.discordWebHookUrl);
 
 const PORT = process.env.PORT || 3000;
+
+// 디스코드 ID 알려주는 봇
+client.on('ready', () => { console.log(`Logged in as ${client.user.tag}!`); });
+client.on('message', msg => {
+  if (msg.content === '!id') {
+    msg.reply(`Your ID: ${msg.guild.ownerID}`);
+  }
+});
+client.login(config.discordAPIKey);
 
 app.use(bodyParser.json()) // for parsing application/json
 app.use(

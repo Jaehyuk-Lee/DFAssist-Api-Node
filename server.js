@@ -21,7 +21,7 @@ const PORT = process.env.PORT || 3000;
 client.on('ready', () => { console.log(`Logged in as ${client.user.tag}!`); });
 client.on('message', msg => {
   if (msg.content === '!id') {
-    msg.reply(`Your ID: ${msg.guild.ownerID}`);
+    msg.reply(`Your ID: ${msg.author.id}`);
   }
 });
 client.login(config.discordAPIKey);
@@ -96,7 +96,7 @@ app.get("/", function(req, res, next){
   console.log(message);
 
   if (service == "discord"){
-    if((user+"").length != 18){
+    if((user+"").length < 10){
       res.send(config.localization['wrong-discord-id'][lang]);
       console.log("user: " + (user || "user-undefined"));
       Sentry.captureException(config.localization['wrong-discord-id'][lang]);

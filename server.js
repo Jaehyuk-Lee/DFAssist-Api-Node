@@ -96,7 +96,7 @@ app.get("/", function(req, res, next){
   console.log(message);
 
   if (service == "discord"){
-    if((user+"").length < 10){
+    if(!/^[0-9]{15}/.test(user)){
       res.send(config.localization['wrong-discord-id'][lang]);
       console.log("user: " + (user || "user-undefined"));
       Sentry.captureException(config.localization['wrong-discord-id'][lang]);

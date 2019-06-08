@@ -24,10 +24,10 @@ const config = {
             'fr-fr' : 'des informations manquantes'
         },
         'wrong-discord-id' : {
-            'ko-kr' : '디스코드 ID는 반드시 18자리 숫자여야 합니다',
-            'en-us' : 'Discord ID must be a 18-digit number',
-            'ja-jp' : 'Discord IDは18桁の数字である必要があります',
-            'fr-fr' : 'Discord ID doit être un nombre à 18 chiffres'
+            'ko-kr' : '디스코드 ID는 15자리 이상의 숫자여야 합니다.',
+            'en-us' : 'Discord ID is over 15-digit number.',
+            'ja-jp' : 'Discord IDは15文字以上の数字である必要があります。',
+            'fr-fr' : 'Discord ID de plus de 15 chiffres.'
         }
     }
 }

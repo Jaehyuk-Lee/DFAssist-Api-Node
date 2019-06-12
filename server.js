@@ -22,6 +22,11 @@ client.on('ready', () => { console.log(`Logged in as ${client.user.tag}!`); });
 client.on('message', msg => {
   if (msg.content === '!id') {
     msg.reply(`Your ID: ${msg.author.id}`);
+    // 디스코드 ID가 18자리를 넘는 경우 Sentry에 기록. (발생 시 프로그램 업데이트 필요)
+    if((""+msg.author.id).length > 18){
+      console.log(msg.author.id);
+      Sentry.captureException();
+    }
   }
 });
 client.login(config.discordAPIKey);

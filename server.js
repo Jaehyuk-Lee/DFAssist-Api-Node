@@ -103,8 +103,6 @@ app.get("/", function(req, res, next){
   if (service == "discord"){
     if(!/^[0-9]{15}/.test(user)){
       res.send(config.localization['wrong-discord-id'][lang]);
-      console.log("user: " + (user || "user-undefined"));
-      Sentry.captureException(config.localization['wrong-discord-id'][lang]);
       return;
     }
     const msg = new webhook.MessageBuilder()

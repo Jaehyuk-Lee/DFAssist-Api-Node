@@ -10,28 +10,28 @@ const config = {
             'en-us' : '< {0} > Matched!',
             'ja-jp' : '< {0} > 突入準備完了!',
             'fr-fr' : '< {0} > disponible!',
-            'de-de' : '< {0} > Gruppe gefunden!'
+            'de-de' : 'Gruppe für < {0} > gefunden!'
         },
         'fate-occured' : {
             'ko-kr' : '< {0} > 돌발 발생!',
             'en-us' : '< {0} > FATE spawned!',
             'ja-jp' : '< {0} > FATE発生!',
             'fr-fr' : 'ALEA < {0} > en cours!',
-            'de-de' : '< {0} > FATE erschienen!'
+            'de-de' : 'FATE < {0} > erschienen!'
         },
         'missing-info' : {
             'ko-kr' : '필요한 정보를 다 받지 못했습니다',
             'en-us' : 'not enough information',
             'ja-jp' : '必要な情報をすべて受け取ってい',
             'fr-fr' : 'des informations manquantes',
-            'de-de' : 'missing-info'
+            'de-de' : 'nicht genügend Informationen'
         },
         'wrong-discord-id' : {
             'ko-kr' : '디스코드 ID는 15자리 이상의 숫자여야 합니다.',
             'en-us' : 'Discord ID is over 15-digit number.',
             'ja-jp' : 'Discord IDは15文字以上の数字である必要があります。',
             'fr-fr' : 'Discord ID de plus de 15 chiffres.',
-            'de-de' : 'wrong-discord-id'
+            'de-de' : 'Discord-ID ist mindestens 15 Ziffern lang.'
         }
     }
 }

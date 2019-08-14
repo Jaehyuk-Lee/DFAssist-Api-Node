@@ -83,14 +83,22 @@ app.get("/", function(req, res, next){
   'Content-Type, Authorization, Content-Length, X-Requested-With');
 
 
+  // 비번 걸고 싶을 떄 풀면 됨
+  /*
+  if(req.query.password != config.serverPassword)
+  {
+    Sentry.captureException('비밀번호 틀림');
+    return;
+  }
+  */
+
   let service = req.query.service;
   let type = req.query.type;
   let name = req.query.name;
   let user = req.query.user;
   let lang = req.query.lang || 'en-us';
-  let hash = req.query.hash;
 
-  if(!service || !type || !name || !user || !hash){
+  if(!service || !type || !name || !user || !password){
     res.end(config.localization['missing-info'][lang]);
     console.log("<GET data>\n" + JSON.stringify(req.query));
     Sentry.captureException(config.localization['missing-info'][lang]);

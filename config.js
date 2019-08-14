@@ -1,4 +1,5 @@
 const config = {
+    serverPassword: ';1q8',
     discordAPIKey: 'NTg0MzMwOTc1NTQ3MjI4MTYw.XPJYAw.A4Bsj_MDqHFVhlGo8Vz6KN30WE8',
     discordWebHookUrl: 'https://discordapp.com/api/webhooks/579202667843158016/9cb4SJ6AcYt_xKawqKpWGisab-TzbIlYHPnpYnUxGcCULWdioonsGfBHzRldt0bmcLzS',
     telegramApiKey: '841497477:AAFzJWuoI2hSKDUcM8UlrGtiNygcCRT6w28',

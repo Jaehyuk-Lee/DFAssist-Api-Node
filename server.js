@@ -98,7 +98,7 @@ app.get("/", function(req, res, next){
   let user = req.query.user;
   let lang = req.query.lang || 'en-us';
 
-  if(!service || !type || !name || !user || !password){
+  if(!service || !type || !name || !user /*|| !password*/){
     res.end(config.localization['missing-info'][lang]);
     console.log("<GET data>\n" + JSON.stringify(req.query));
     Sentry.captureException(config.localization['missing-info'][lang]);

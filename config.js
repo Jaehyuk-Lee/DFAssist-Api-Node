@@ -34,13 +34,6 @@ const config = {
             'fr-fr' : '{0}',
             'de-de' : '{0}'
         },
-        'duty-status-roulette-waiting' : {
-            'ko-kr' : '매칭 대기 중',
-            'en-us' : 'Retreving information...',
-            'ja-jp' : '情報を取得中...',
-            'fr-fr' : 'Obtention des informations...',
-            'de-de' : 'Rufe Informationen ab...'
-        },
         'missing-info' : {
             'ko-kr' : '필요한 정보를 다 받지 못했습니다',
             'en-us' : 'not enough information',

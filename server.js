@@ -106,12 +106,6 @@ app.get("/", function(req, res, next){
   }
 
   let message = config.localization[type][lang].replace("{0}", name);
-  // 이 if문 부분이 있는게 맘에 안든다.
-  if(type == "duty-status-roulette"){
-    let idx = message.indexOf("-");
-    if(str.substr(idx+2) == "0")
-      message = message.replace(/ - [0-9]{1,}/, " - "+config.localization["duty-status-roulette-waiting"][lang]);
-  }
   console.log(message);
 
   if (service == "discord"){

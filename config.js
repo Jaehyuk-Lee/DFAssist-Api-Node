@@ -20,6 +20,13 @@ const config = {
             'fr-fr' : 'ALEA < {0} > en cours!',
             'de-de' : 'FATE < {0} > erschienen!'
         },
+        'duty-status' : {
+            'ko-kr' : '매칭 상태 업데이트됨 [{0}]',
+            'en-us' : 'Matching state updated [{0}]',
+            'ja-jp' : '申請状態が更新されました [{0}]',
+            'fr-fr' : 'Mise à jour de la file d\'attente [{0}]',
+            'de-de' : 'Suchstatus aktualisiert [{0}]'
+        },
         'missing-info' : {
             'ko-kr' : '필요한 정보를 다 받지 못했습니다',
             'en-us' : 'not enough information',

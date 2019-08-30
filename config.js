@@ -27,6 +27,13 @@ const config = {
             'fr-fr' : 'Mise à jour de la file d\'attente [{0}]',
             'de-de' : 'Suchstatus aktualisiert [{0}]'
         },
+        'duty-status-roulette' : {
+            'ko-kr' : '{0}',
+            'en-us' : '{0}',
+            'ja-jp' : '{0}',
+            'fr-fr' : '{0}',
+            'de-de' : '{0}'
+        },
         'missing-info' : {
             'ko-kr' : '필요한 정보를 다 받지 못했습니다',
             'en-us' : 'not enough information',

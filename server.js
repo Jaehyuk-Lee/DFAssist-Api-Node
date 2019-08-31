@@ -99,18 +99,18 @@ app.get("/", function(req, res, next){
   let lang = req.query.lang || 'en-us';
 
   if(!service || !type || !name || !user /*|| !password*/){
-    res.end(config.localization['missing-info'][lang]);
+    res.end(config.localization[lang]['missing-info']);
     console.log("<GET data>\n" + JSON.stringify(req.query));
-    Sentry.captureException(config.localization['missing-info'][lang]);
+    Sentry.captureException(config.localization[lang]['missing-info']);
     return;
   }
 
-  let message = config.localization[type][lang].replace("{0}", name);
+  let message = config.localization[lang][type].replace("{0}", name);
   console.log(message);
 
   if (service == "discord"){
     if(!/^[0-9]{15}/.test(user)){
-      res.send(config.localization['wrong-discord-id'][lang]);
+      res.send(config.localization[lang]['wrong-discord-id']);
       return;
     }
     const msg = new webhook.MessageBuilder()

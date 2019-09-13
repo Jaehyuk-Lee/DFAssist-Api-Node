@@ -2,6 +2,7 @@ const config = require('./config');
 
 const express = require('express');
 const app = express();
+const app2 = express();
 const webhook = require("webhook-discord");
 const request = require("request");
 const bodyParser = require('body-parser');
@@ -30,6 +31,12 @@ client.on('message', msg => {
   }
 });
 client.login(config.discordAPIKey);
+
+app2.use(express.static(__dirname + '/public'));
+
+app2.listen(8000, function () {
+  console.log('Example app listening on port 8000!');
+});
 
 app.use(bodyParser.json()) // for parsing application/json
 app.use(
@@ -143,5 +150,3 @@ app.get("/", function(req, res, next){
 app.listen(PORT, function () {
   console.log('Example app listening on port ' + PORT + '!');
 });
-
-//test

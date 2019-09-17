@@ -45,6 +45,14 @@ const config = {
             "duty-status-roulette" : "{0}",
             "missing-info" : "nicht genügend Informationen",
             "wrong-discord-id" : "Discord-ID ist mindestens 15 Ziffern lang."
+        },
+        "ru-ru" : {
+            "duty-matched" : "< {0} > Найдено!",
+            "fate-occured" : "< {0} > FATE появился!",
+            "duty-status" : "Состояние поиска обновлено [{0}]",
+            "duty-status-roulette" : "{0}",
+            "missing-info" : "недостаточно информации",
+            "wrong-discord-id" : "Discord ID не может содержать в себе меньше 15 цифр"
         }
     }
 }

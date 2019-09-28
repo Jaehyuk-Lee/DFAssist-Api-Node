@@ -53,6 +53,14 @@ const config = {
             "duty-status-roulette" : "{0}",
             "missing-info" : "недостаточно информации",
             "wrong-discord-id" : "Discord ID не может содержать в себе меньше 15 цифр"
+        },
+        "es-es" : {
+            "duty-matched" : "< {0} > Encontrado!",
+            "fate-occured" : "< {0} > Apreció el FATE!",
+            "duty-status" : "Estado de la cola actualizado [{0}]",
+            "duty-status-roulette" : "{0}",
+            "missing-info" : "No hay suficiente información",
+            "wrong-discord-id" : "La ID de discord es un número compuesto por 15 dígitos."
         }
     }
 }

@@ -46,6 +46,14 @@ const config = {
             "missing-info" : "nicht genügend Informationen",
             "wrong-discord-id" : "Discord-ID ist mindestens 15 Ziffern lang."
         },
+        "zh-cn" : {
+            "duty-matched" : "「{0}」匹配成功！",
+            "fate-occured" : "「{0}」危命出现！",
+            "duty-status" : "搜索状态已更新 [{0}]",
+            "duty-status-roulette" : "{0}",
+            "missing-info" : "信息不足",
+            "wrong-discord-id" : "Discord ID 需要为 15 位以上。"
+        },
         "ru-ru" : {
             "duty-matched" : "< {0} > Найдено!",
             "fate-occured" : "< {0} > FATE появился!",
